@@ -1,0 +1,12 @@
+{
+    "data" : [
+        {
+            "HoraInicioAtencion": "08:00:00",
+            "HoraFinAtencion": "18:00:00",
+            "HoraInicioReceso": "12:00:00",
+            "HoraFinReceso": "14:00:00",
+            "HoraInicioAtencionFinSemana": "09:00:00",
+            "HoraFinAtencionFinSemana": "16:00:00"
+        }
+    ]
+}

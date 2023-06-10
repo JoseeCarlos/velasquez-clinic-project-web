@@ -1,0 +1,21 @@
+.user-list {
+  padding: 10px 20px;
+}
+
+.user-list .estado.activo,
+.user-list .estado.inactivo {
+  display: block;
+  width: 100px;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+
+.user-list .estado.activo {
+  background-color: green;
+}
+
+.user-list .estado.inactivo {
+  background-color: red;
+}
+
