@@ -4,6 +4,8 @@ import { RiUserFill, RiLockPasswordFill } from "react-icons/ri";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ResetPasswordModal from "../components/ResetPasswordModal";
+
 const LoginContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -11,7 +13,9 @@ const LoginContainer = styled.div`
 
 const LeftSide = styled.div`
   flex: 1;
-  background-color: #f9a13c;
+  background-image: url('../assets/animated.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,8 +35,8 @@ const LeftSideText = styled.h1`
   margin-bottom: 20px;
   font-size: 34px;
   margin: 0 20px;
-  width: 450px;
-  font-family: 'Dancing Script', cursive;
+  width: 550px;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const RightSide = styled.div`
@@ -147,15 +151,32 @@ const EyeOffIcon = styled(FiEyeOff)`
 `;
 
 const rotatingTexts = [
-  "La medicina es la única profesión universal que en todas partes siguelos mismos métodos, actúa con los mismos objetivos y busca los mismosfines.",
-  "Los mejores médicos del mundo son: el doctor dieta, el doctor reposo y el doctor alegría.",
-  "Los médicos como la cerveza, mejor cuanto más viejos.",
+    "Una sonrisa es el mejor accesorio que puedes llevar, y en nuestra clínica dental nos encargamos de hacerla brillar.",
+    "Tu sonrisa es única y especial, y en nuestra clínica dental nos dedicamos a realzar su belleza y salud.",
+    "En nuestra clínica dental, transformamos sonrisas y creamos confianza, porque sabemos que una sonrisa radiante ilumina el mundo.",
+    "Cada sonrisa es una obra de arte, y en nuestra clínica dental somos artistas apasionados por crear sonrisas hermosas.",
+    "En nuestra clínica dental, cuidamos cada detalle para que tu experiencia sea cómoda y placentera, porque tu sonrisa merece lo mejor.",
+    "La clave de una sonrisa hermosa está en la salud dental, y en nuestra clínica nos enfocamos en lograr ambos, belleza y salud.",
+    "En nuestra clínica dental, creemos que una sonrisa contagiosa puede cambiar vidas, por eso nos esforzamos en brindarte la mejor atención.",
+    "Tu sonrisa es una carta de presentación al mundo, y en nuestra clínica dental nos aseguramos de que siempre transmita alegría y confianza.",
+    "En nuestra clínica dental, creemos que cada visita es una oportunidad para mejorar tu bienestar y embellecer tu sonrisa.",
+    "Nuestra pasión es ver cómo una sonrisa transforma la vida de nuestros pacientes, y en nuestra clínica dental trabajamos para hacerlo realidad."
 ];
 
 const Login = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -209,7 +230,8 @@ const Login = () => {
             >
               Iniciar sesión
             </Button>
-            <ForgotPasswordLink>¿Olvidaste la contraseña?</ForgotPasswordLink>
+            <ForgotPasswordLink onClick={handleOpenModal} >¿Olvidaste la contraseña?</ForgotPasswordLink>
+            <ResetPasswordModal isOpen={isModalOpen} onClose={handleCloseModal} />
           </LoginForm>
         </Card>
       </RightSide>

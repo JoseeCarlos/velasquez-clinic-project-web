@@ -2,20 +2,24 @@
   "name": "velasquez-clinic-project-web",
   "private": true,
   "version": "0.0.0",
-  "homepage":"https://JoseeCarlos.github.io/velasquez-clinic-project-web",
+  "homepage": "https://JoseeCarlos.github.io/velasquez-clinic-project-web",
   "type": "module",
   "proxy": "http://localhost:5000",
   "dependencies": {
     "chart.js": "^4.3.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
+    "leaflet": "^1.9.4",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primereact": "^9.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.9.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.0-rc.3"
   },
   "scripts": {
@@ -23,7 +27,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

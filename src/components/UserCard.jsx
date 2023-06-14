@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useState, useEffect, useRef } from "react";
 
 const UserCardContainer = styled.div`
   position: absolute;
@@ -45,29 +46,49 @@ const LogoutButton = styled.button`
   cursor: pointer;
 `;
 
-const UserCard = ({ isOpen, position, onLogout }) => {
+const UserCard = ({ isOpen, position, onLogout, setUserCardOpen }) => {
+  const ref = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+        console.log('holaaa');
+      
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <>
       {isOpen && (
         <UserCardContainer
+          ref={ref}
           style={{
             top: `${position.top + 45}px`,
             right: `${window.innerWidth - position.right}px`,
           }}
         >
-          <UserCardTitle>User Profile</UserCardTitle>
+          <UserCardTitle>Perfil de usuario</UserCardTitle>
           <UserCardItem>
             <img
-              src="assets/demo/images/avatar/imageLogo.png"
+              src="https://firebasestorage.googleapis.com/v0/b/parcial-gps-pm2.appspot.com/o/imageLogo.png?alt=media&token=074b4e9d-93dd-4363-9c8b-54c380c1b41a"
               alt="Profile Picture"
             />
             <span>Micaela carballo</span>
           </UserCardItem>
           <UserCardItem>
-            <span>Information 1</span>
+            <span>Correo: carballo@gmail.com</span>
           </UserCardItem>
           <UserCardItem>
-            <span>Information 2</span>
+            <span>Informacion 2</span>
           </UserCardItem>
           <LogoutButton onClick={onLogout}>Cerrar sesión</LogoutButton>
         </UserCardContainer>

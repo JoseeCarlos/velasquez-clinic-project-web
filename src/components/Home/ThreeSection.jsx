@@ -36,7 +36,6 @@ const CardGroup = styled.div`
 const Card = styled.div`
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
   padding: 20px;
 `;
 
@@ -44,7 +43,6 @@ const CardImage = styled.img`
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
 `;
 
 const CardTitle = styled.h3`
@@ -63,52 +61,54 @@ const CardSpecialty = styled.p`
 const services = [
   {
     id: 1,
-    title: "Servicio 1",
-    specialty: "Especialidad 1",
-    image: "../assets/ort.jpg",
+    title: "Limpieza Dental",
+    specialty: "Higiene Oral",
+    image: "../assets/ort.jpg"
   },
   {
     id: 2,
-    title: "Servicio 2",
-    specialty: "Especialidad 2",
-    image: "../assets/implan.jpg",
+    title: "Implantes Dentales",
+    specialty: "Implantología",
+    image: "../assets/implan.jpg"
   },
   {
     id: 3,
-    title: "Servicio 3",
-    specialty: "Especialidad 3",
-    image: "../assets/pedi.jpg",
+    title: "Odontopediatría",
+    specialty: "Atención Dental Infantil",
+    image: "../assets/pedi.jpg"
   },
   {
     id: 4,
-    title: "Servicio 4",
-    specialty: "Especialidad 4",
-    image: "../assets/son.jpg",
+    title: "Blanqueamiento Dental",
+    specialty: "Estética Dental",
+    image: "../assets/son.jpg"
   },
   {
     id: 5,
-    title: "Servicio 5",
-    specialty: "Especialidad 5",
-    image: "../assets/peri.jpg",
-  },{
-    id: 3,
-    title: "Servicio 3",
-    specialty: "Especialidad 3",
-    image: "../assets/pedi.jpg",
-  },
-  {
-    id: 4,
-    title: "Servicio 4",
-    specialty: "Especialidad 4",
-    image: "../assets/son.jpg",
+    title: "Ortodoncia",
+    specialty: "Corrección de la Posición Dental",
+    image: "../assets/ort.jpg"
   },
   {
     id: 6,
-    title: "Servicio 5",
-    specialty: "Especialidad 5",
-    image: "../assets/peri.jpg",
+    title: "Endodoncia",
+    specialty: "Tratamiento de Conducto",
+    image: "../assets/implan.jpg"
   },
-];
+  {
+    id: 7,
+    title: "Prótesis Dental",
+    specialty: "Reemplazo de Dientes Faltantes",
+    image: "../assets/implan.jpg"
+  },
+  {
+    id: 8,
+    title: "Cirugía Oral",
+    specialty: "Cirugía Maxilofacial",
+    image: "../assets/implan.jpg"
+  }
+]
+
 
 const ThreeSection = () => {
   const [selectedFilter, setSelectedFilter] = React.useState("Todos");
@@ -133,24 +133,23 @@ const ThreeSection = () => {
             Todos
           </MenuItem>
           <MenuItem
-            active={selectedFilter === "Especialidad 1"}
-            onClick={() => handleFilter("Especialidad 1")}
+            active={selectedFilter === "Implantología"}
+            onClick={() => handleFilter("Implantología")}
           >
-            Especialidad 1
+            Implantología
           </MenuItem>
           <MenuItem
-            active={selectedFilter === "Especialidad 2"}
-            onClick={() => handleFilter("Especialidad 2")}
+            active={selectedFilter === "Tratamiento de Conducto"}
+            onClick={() => handleFilter("Tratamiento de Conducto")}
           >
-            Especialidad 2
+            Tratamiento de Conducto
           </MenuItem>
           <MenuItem
-            active={selectedFilter === "Especialidad 3"}
-            onClick={() => handleFilter("Especialidad 3")}
+            active={selectedFilter === "Estética Dental"}
+            onClick={() => handleFilter("Estética Dental")}
           >
-            Especialidad 3
+            Estética Dental
           </MenuItem>
-          {/* Agrega más opciones de filtro aquí */}
         </Menu>
       </FilterContainer>
       <CardGroup>

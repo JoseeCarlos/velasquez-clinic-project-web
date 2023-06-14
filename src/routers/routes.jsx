@@ -10,6 +10,9 @@ import { Configuraciones } from '../pages/settings'
 import { ListDoctor } from "../pages/Doctor"
 import { Quotes } from "../pages/Quotes"
 import CalendarScreen from "../pages/pendingAppointments"
+import UserProfileEdit from "../pages/UserProfileEdit"
+import Assignment from "../pages/Assignment"
+import News from "../pages/News"
 /* --- FIN DE LAS IMPORTACIONES DE LAS PÁGINAS --- */
 
 export function Rutas() {
@@ -26,7 +29,13 @@ export function Rutas() {
       <Route path="/configuraciones" element={<Configuraciones />} />
       <Route path="/doctor" element={<ListDoctor />} />
       <Route path="/Citas" element={<Quotes />} />
+      <Route path="/asignaciones" element={<Assignment />} />
       <Route path="/citas_pendientes" element={<CalendarScreen />} />
+      <Route path="/editar_perfil" element={<UserProfileEdit />} />
+      <Route path="/noticias" element={<News />} />
+
+
+
     </Routes>
   )
 }

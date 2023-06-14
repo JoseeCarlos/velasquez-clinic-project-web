@@ -73,7 +73,7 @@ const Navbar = () => {
         <nav>
           <NavbarUL className="navbar-ul">
             <NavbarLI className="navbar-li">
-              <NavbarA href="#">Inicio</NavbarA>
+              <NavbarA href="/">Inicio</NavbarA>
             </NavbarLI>
             <NavbarLI className="navbar-li">
               <NavbarA href="#">Sobre Nosotros</NavbarA>
@@ -85,7 +85,7 @@ const Navbar = () => {
               <NavbarA href="#">Testimonios</NavbarA>
             </NavbarLI>
             <NavbarLI className="navbar-li">
-              <NavbarA href="#">Contacto</NavbarA>
+              <NavbarA href="/noticias">Noticias</NavbarA>
             </NavbarLI>
             <NavbarLI className="navbar-li">
               <NavbarButton

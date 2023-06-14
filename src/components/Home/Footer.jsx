@@ -66,10 +66,11 @@ const Footer = () => {
       <FooterContent>
         <FooterLogo src="../assets/logo-white.png" alt="Logo" />
         <FooterLinks>
-          <FooterLink href="#">Home</FooterLink>
-          <FooterLink href="#">About</FooterLink>
-          <FooterLink href="#">Services</FooterLink>
-          <FooterLink href="#">Contact</FooterLink>
+          <FooterLink href="#">Inicio</FooterLink>
+          <FooterLink href="#">Sobre Nosotros</FooterLink>
+          <FooterLink href="#">Especialidades</FooterLink>
+          <FooterLink href="#">Testimonio</FooterLink>
+          <FooterLink href="#">Contacto</FooterLink>
         </FooterLinks>
         <SocialIcons>
           <SocialIcon href="#">

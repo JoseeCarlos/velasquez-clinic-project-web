@@ -1,33 +1,33 @@
-import React, { useEffect, useState, useRef } from "react";
-import { FaBell } from "react-icons/fa";
+import React from "react";
 import styled from "styled-components";
+import { FaBell } from "react-icons/fa";
+import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import NotificationCard from "./NotificationCard";
 
 const TopBarContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  padding: 0 2rem;
-  display: grid;
+  display: flex;
   align-items: center;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.09),
-    0px 1px 4px rgba(0, 0, 0, 0.09);
+  justify-content: space-between;
+  padding: 1rem;
   background-color: #f9a13c;
 `;
 
-const TopBarPhoto = styled.div`
-  margin: 0 0 0 auto;
-  padding: 0;
+const LeftSection = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 0.7rem;
-  transition: all 600ms;
-  cursor: pointer;
+`;
 
-  &:hover {
-    transform: scale(1.02, 1.02);
-  }
+const Title = styled.h1`
+  font-size: 18px;
+  color: #fff;
+  margin-right: 1rem;
+`;
+
+const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 const SearchBarContainer = styled.div`
@@ -38,6 +38,7 @@ const SearchBarContainer = styled.div`
   padding: 8px;
   width: 300px;
   height: 50px;
+  margin-right: 10px;
 `;
 
 const SearchIcon = styled.i`
@@ -61,20 +62,14 @@ const SearchBar = styled.input`
 const ProfilePicture = styled.img`
   height: 50px;
   width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 20px;
 `;
 
-const LeftSection = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-  color: #fff;
-  margin-left: 10px;
-`;
-
-const TopBar = () => {
+const TopBar = ({ title }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationPosition, setNotificationPosition] = useState(null);
   const [userCardOpen, setUserCardOpen] = useState(false);
@@ -91,64 +86,57 @@ const TopBar = () => {
   };
 
   const cantidadNotificaciones = 10;
-
   return (
-    <>
-      <TopBarContainer>
-        {/* <LeftSection>
-          <Title>Titulo de la Página</Title>
-        </LeftSection> */}
-
-        <TopBarPhoto>
-          <SearchBarContainer>
-            <SearchIcon className="pi pi-search" />
-            <SearchBar
-              type="text"
-              placeholder="Buscar"
-              id="search-bar"
-              className="search-bar"
-            />
-          </SearchBarContainer>
-          <div style={{ position: "relative" }}>
-            <FaBell
-              size={25}
-              color="#61282d"
-              onClick={handleNotificationsClick}
-            />
-            <span
-              style={{
-                position: "absolute",
-                top: "-10px",
-                right: "-10px",
-                backgroundColor: "white",
-                color: "#61282d",
-                borderRadius: "50%",
-                padding: "2px 6px",
-                fontSize: "12px",
-              }}
-            >
-              {cantidadNotificaciones}
-            </span>
-          </div>
-          <ProfilePicture
-            src="assets/demo/images/avatar/imageLogo.png"
-            alt="Foto de perfil"
-            id="foto"
-            onClick={handleProfileClick}
-            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+    <TopBarContainer>
+      <LeftSection>
+        <Title>{title}</Title>
+      </LeftSection>
+      <RightSection>
+        <SearchBarContainer>
+          <SearchIcon className="pi pi-search" />
+          <SearchBar
+            type="text"
+            placeholder="Buscar"
+            id="search-bar"
+            className="search-bar"
           />
-        </TopBarPhoto>
-
-        {userCardOpen && (
-          <UserCard isOpen={userCardOpen} position={userCardPosition}/>
-          
-        )}
-        {showNotifications && (
-          <NotificationCard isOpen={showNotifications} position={notificationPosition}/>
-        )}
-      </TopBarContainer>
-    </>
+        </SearchBarContainer>
+        <div style={{ position: "relative" }}>
+          <FaBell
+            size={25}
+            color="#61282d"
+            onClick={handleNotificationsClick}
+          />
+          <span
+            style={{
+              position: "absolute",
+              top: "-10px",
+              right: "-10px",
+              backgroundColor: "white",
+              color: "#61282d",
+              borderRadius: "50%",
+              padding: "2px 6px",
+              fontSize: "12px",
+              fontWeight: "bold",
+              
+            }}
+          >
+            {cantidadNotificaciones}
+          </span>
+        </div>
+        <ProfilePicture
+          src="https://firebasestorage.googleapis.com/v0/b/parcial-gps-pm2.appspot.com/o/imageLogo.png?alt=media&token=074b4e9d-93dd-4363-9c8b-54c380c1b41a"
+          alt="Profile"
+          onClick={handleProfileClick}
+        />
+      </RightSection>
+      <UserCard isOpen={userCardOpen} position={userCardPosition} setUserCardOpen={setUserCardOpen} />
+      <NotificationCard
+        isOpen={showNotifications}
+        position={notificationPosition}
+      />
+    </TopBarContainer>
   );
-}
+};
 
 export default TopBar;

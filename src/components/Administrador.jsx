@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { useLocation } from "react-router-dom";
 
-/* IMPORTACIONES DE LOS COMPONENTES */
-import TopBar from './TopBar';
-import Menu from './MenuAdministrador';
-/* --- FIN DE LAS IMPORTACIONES DE LOS COMPONENTES --- */
+import TopBar from "./TopBar";
+import Menu from "./MenuAdministrador";
 
-/* IMPORTACION DE LAS RUTAS */
-import { Rutas } from '../routers/routes';
+import { Rutas } from "../routers/routes";
 
-/* IMPORTACION DE ESTILOS */
-import PrimeReact from 'primereact/api';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 
 const Body = styled.div`
   height: 100vh;
@@ -41,16 +36,49 @@ const Content = styled.div`
 
 const Administrador = () => {
   const [menuAbierto, setMenuAbierto] = useState(true);
+  const location = useLocation();
+  const currentPath = location.pathname;
+  let currentTitle = "";
+
+  switch (currentPath) {
+    case "/admin/" || '/admin' :
+      currentTitle = "Inicio";
+      break;
+    case "/admin/listaUsuarios":
+      currentTitle = "Lista de Usuarios";
+      break;
+    case "/admin/citas":
+      currentTitle = "Citas";
+      break;
+    case "/admin/citas_pendientes":
+      currentTitle = "Citas Pendientes";
+      break;
+      case "/admin/reportes":
+      currentTitle = "Reportes";
+      break;
+      case "/admin/doctor":
+      currentTitle = "Lista de doctores";
+      break;
+      case "/admin/asignaciones":
+      currentTitle = "Asignacion de doctores";
+      break;
+      case "/admin/editar_perfil":
+      currentTitle = "Pantalla para editar perfil";
+      break;
+      case "/admin/noticias":
+      currentTitle = "Administracion de Noticias";
+      break;
+  }
 
   return (
     <Body>
-        <Container activo={menuAbierto}>
-          <Menu menuAbierto={menuAbierto} setMenuAbierto={setMenuAbierto} />
-          <Content>
-            <TopBar />
-            <Rutas />
-          </Content>
-        </Container>
+      <Container activo={menuAbierto}>
+        <Menu menuAbierto={menuAbierto} setMenuAbierto={setMenuAbierto} />
+        <Content>
+          <TopBar title={currentTitle} />
+          <Rutas />
+        </Content>
+      </Container>
     </Body>
   );
 };

@@ -10,6 +10,7 @@ import SevenSection from '../components/Home/sevenSection';
 import NineSection from '../components/Home/NineSection';
 import ElevenSection from '../components/Home/ElevenSection';
 import Footer from '../components/Home/Footer';
+import Section from '../components/Section';
 
 const Home = () => {
   return (
@@ -45,9 +46,11 @@ const Home = () => {
                 </div>
             </div>
         </div>
-
+        <Section title={'Especialidades'} />
         <ThreeSection/>
+        <Section title={'Nuestros Profesionales'} />
         <FourSection/>
+        <Section title={'Galeria de fotos'} />
         <FiveSection/>
         <SixSection/>
         <SevenSection/>

@@ -7,7 +7,7 @@ const SixSectionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 15px 10px;
   background-color: #f8f8f8;
 `;
 
@@ -37,7 +37,7 @@ const TestimonialText = styled.p`
   font-weight: 700;
   color: #000;
   text-align: center;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
   width: 700px;
 `;
 
@@ -73,18 +73,18 @@ const Button = styled.button`
 const testimonials = [
   {
     id: 1,
-    text: "Successful businesses know the importance of building and maintaining good working relationships, whether it is with partners, employees, business or trade organizations, the government, media representatives, vendors, consumers, or the community at large. A business must carefully balance the benefits of these interpersonal relationships and should never allow these relationships to blind their judgment.",
-    name: "John Doe",
+    text: "Estoy agradecido por el excelente cuidado dental que recibí en la Clínica Velasquez. El equipo me guió y educó sobre la higiene dental, y me proporcionó un tratamiento personalizado. ¡Recomiendo esta clínica!",
+    name: "Josue Caller",
   },
   {
     id: 2,
-    text: "Successful businesses know the importance of building and maintaining good working relationships, whether it is with partners, employees, business or trade organizations, the government, media representatives, vendors, consumers, or the community at large. A business must carefully balance the benefits of these interpersonal relationships and should never allow these relationships to blind their judgment.",
-    name: "Jane Smith",
+    text: "La Clínica Dental velasquez superó mis expectativas. El personal fue comprensivo y cuidadoso, y mi experiencia fue muy agradable. Ahora tengo una sonrisa más saludable y confianza renovada. ¡Gracias!.",
+    name: "Jimena Sanchez",
   },
   {
     id: 3,
-    text: "Successful businesses know the importance of building and maintaining good working relationships, whether it is with partners, employees, business or trade organizations, the government, media representatives, vendors, consumers, or the community at large. A business must carefully balance the benefits of these interpersonal relationships and should never allow these relationships to blind their judgment.",
-    name: "David Johnson",
+    text: "Estoy encantado con los resultados obtenidos en la Clínica Dental Velasquez Perfecta. El equipo fue amable y profesional, y me sentí cómodo durante todo el tratamiento. ¡Recomendaría esta clínica a cualquiera!.",
+    name: "David Montaño",
   },
 ];
 

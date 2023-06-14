@@ -31,7 +31,6 @@ const Image = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
@@ -57,17 +56,20 @@ const PreviewImage = styled.img`
   max-width: 80%;
   max-height: 80%;
   object-fit: contain;
-  border-radius: 10px;
+  
 `;
 
 const FiveSection = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [leftImageIndex, setLeftImageIndex] = useState(0);
   const [rightImages, setRightImages] = useState([
     "../assets/ga_1.jpg",
     "../assets/ga_2.jpg",
     "../assets/ga_7.jpg",
+    "../assets/ga_4.jpg",
     "../assets/ga_5.jpg",
+    "../assets/ga_3.jpg",
+    "../assets/ga_6.jpg",
   ]);
 
   const openPreview = (image) => {
@@ -78,9 +80,18 @@ const FiveSection = () => {
     setSelectedImage(null);
   };
 
+  // useEffect(() => {
+  //   fetch('your_json_endpoint')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setRightImages(data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching JSON:', error);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    // Cambiar la imagen de la sección izquierda cada 5 segundos
     const interval = setInterval(() => {
       setLeftImageIndex((prevIndex) => (prevIndex + 1) % rightImages.length);
     }, 5000);
@@ -91,37 +102,39 @@ const FiveSection = () => {
   }, [rightImages.length]);
 
 
+  const getRandomImageIndex = () => {
+    return Math.floor(Math.random() * rightImages.length);
+  };
+
   return (
     <>
-    <Title>Galería</Title>
-    <FiveSectionContainer>
-      <LeftSection>
-        <Image
-          src={rightImages[leftImageIndex]}
-          alt={`Image ${leftImageIndex + 1}`}
-          onClick={()=> openPreview(rightImages[leftImageIndex])}
-        />
-      </LeftSection>
+      <FiveSectionContainer>
+        <LeftSection>
+          <Image
+            src={rightImages[leftImageIndex]}
+            alt={`Image ${leftImageIndex + 1}`}
+            onClick={() => openPreview(rightImages[leftImageIndex])}
+          />
+        </LeftSection>
 
-      <RightSection>
-        {rightImages.map((image, index) => (
+        <RightSection>
+        {rightImages.slice(0, 4).map((_, index) => (
           <Image
             key={index}
-            src={image}
+            src={rightImages[getRandomImageIndex()]}
             alt={`Image ${index + 1}`}
-            onClick={() => openPreview(image)}
+            onClick={() => openPreview(rightImages[getRandomImageIndex()])}
           />
         ))}
       </RightSection>
 
-      {selectedImage && (
-        <PreviewContainer onClick={closePreview}>
-          <PreviewImage src={selectedImage} alt="Preview" />
-        </PreviewContainer>
-      )}
-    </FiveSectionContainer>
+        {selectedImage && (
+          <PreviewContainer onClick={closePreview}>
+            <PreviewImage src={selectedImage} alt="Preview" />
+          </PreviewContainer>
+        )}
+      </FiveSectionContainer>
     </>
-    
   );
 };
 

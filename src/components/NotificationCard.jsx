@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { FaBell, FaCalendarPlus } from 'react-icons/fa';
+import { RiAlarmWarningFill, RiCalendarEventFill } from 'react-icons/ri';
+import { format, isToday, isYesterday } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 const NotificationCardContainer = styled.div`
   position: absolute;
@@ -23,6 +27,7 @@ const NotificationItem = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid #e0e0e0;
@@ -37,6 +42,14 @@ const NotificationItem = styled.div`
   span {
     font-size: 14px;
     color: #333;
+    padding: 10px;
+  }
+
+  .notification-date {
+    // Estilos de la fecha de la notificación
+    font-size: 12px;
+    color: #999;
+    text-transform: capitalize;
   }
 
   &:hover {
@@ -45,7 +58,62 @@ const NotificationItem = styled.div`
   }
 `;
 
+const ContainerIcon = styled.div`
+  padding: 8px 16px;
+  background-color: ${props => props.bgColor || '#f9a13c'};
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 15px;
+
+  &:hover {
+    background-color: ${props => props.hoverColor || '#61282d'};
+  }
+`;
+
 const NotificationCard = ({ isOpen, position }) => {
+
+  const notifications = [
+    {
+      id: 1,
+      message: "Recuerda que tienes una cita programada para mañana a las 10:00 AM.",
+      icon: <RiAlarmWarningFill />,
+      iconColor: "#ff0000",
+      iconHoverColor: "#990000",
+      date: "2023-06-15"
+    },
+    {
+      id: 2,
+      message: "Has recibido a un nuevo paciente. Su nombre es Juan Pérez.",
+      icon: <RiCalendarEventFill />,
+      iconColor: "#1fa11f",
+      iconHoverColor: "#c0cfc8",
+      date: "2023-06-14"
+    },
+    {
+      id: 2,
+      message: "Has recibido a un nuevo paciente. Su nombre es Juan Pérez.",
+      icon: <RiCalendarEventFill />,
+      iconColor: "#1fa11f",
+      iconHoverColor: "#c0cfc8",
+      date: "2023-06-13"
+    },
+    // Agrega más objetos de notificación según sea necesario
+  ];
+
+  const getFormattedDate = (date) => {
+    if (isToday(date)) {
+      return 'Hoy';
+    } else if (isYesterday(date)) {
+      return 'Ayer';
+    } else {
+      return format(date, "EEEE, d 'de' MMMM 'de' yyyy", { locale: es });
+    }
+  };
+
   return (
     <>
       {isOpen && (
@@ -55,15 +123,18 @@ const NotificationCard = ({ isOpen, position }) => {
             right: `${window.innerWidth - position.right}px`,
           }}
         >
-          <NotificationTitle>Notifications</NotificationTitle>
-          <NotificationItem>
-            <img src="notification-image-1.jpg" alt="Notification 1" />
-            <span>Notification 1 </span>
-          </NotificationItem>
-          <NotificationItem>
-            <img src="notification-image-2.jpg" alt="Notification 2" />
-            <span>Notification 2 </span>
-          </NotificationItem>
+          <NotificationTitle>Notificaciones</NotificationTitle>
+          {notifications.map(notification => (
+            <NotificationItem key={notification.id}>
+              <ContainerIcon bgColor={notification.iconColor} hoverColor={notification.iconHoverColor}>
+                {notification.icon}
+              </ContainerIcon>
+              <span>{notification.message}</span>
+              <span className="notification-date">
+                {getFormattedDate(new Date(notification.date))}
+              </span>
+            </NotificationItem>
+          ))}
         </NotificationCardContainer>
       )}
     </>

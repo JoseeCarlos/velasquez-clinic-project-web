@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaPhone, FaMapMarker, FaClock } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
+import MapComponent from "../MapComponent";
 
 const ElevenSectionContainer = styled.div`
   display: flex;
@@ -108,6 +109,7 @@ const MapImage = styled.img`
 `;
 
 const ElevenSection = () => {
+  const position = [-17.385, -66.166];
   return (
     <ElevenSectionContainer>
       <Title>Nuestra Ubicacion</Title>

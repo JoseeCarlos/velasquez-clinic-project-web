@@ -9,16 +9,6 @@ const NineSectionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #aaa;
-  border-radius: 15px;
-`;
-
-const Card = styled.div`
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  
 `;
 
 const LeftSection = styled.div`
@@ -31,12 +21,22 @@ const LeftSection = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  border-radius: 15px;
 `;
 
 const RightSection = styled.div`
   flex: 60%;
-  padding-left: 20px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Card = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  
 `;
 
 const Title = styled.h2`
@@ -80,9 +80,13 @@ const SubmitButton = styled.button`
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
+  width: 200px;
+
+  &:hover {
+    background-color: #61282d;
+  }
 `;
 
 const NineSection = () => {

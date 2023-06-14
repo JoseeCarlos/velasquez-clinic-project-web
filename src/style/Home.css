@@ -199,7 +199,6 @@
 .second-section-card {
   width: 450px;
   height: 350px;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -212,7 +211,6 @@
   position: absolute;
   left: 10px;
   top: 25px;
-  border-radius: 20px;
 }
 
 .second-section-img {
@@ -224,7 +222,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 20px;
 }
 
 .second-section-img-two {
@@ -236,7 +233,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 20px;
 }
 
 .second-section-img-three {
@@ -248,7 +244,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 20px;
+  
 }
 
 .second-section-card-right {
@@ -258,11 +254,10 @@
   position: absolute;
   left: 206px;
   top: 75px;
-  border-radius: 20px;
 }
 
 .second-section-card-right h1 {
-  font-family: "Raleway";
+  font-family: "Montserrat", sans-serif !important;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -279,6 +274,7 @@
   text-align: center !important;
   font-weight: 400 !important;
   font-size: 15px;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .seven-section-card-below h3 {

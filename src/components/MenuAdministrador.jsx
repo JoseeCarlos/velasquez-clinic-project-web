@@ -8,11 +8,13 @@ import {
   FaClipboard,
   FaClipboardCheck,
   FaHome,
+  FaNewspaper,
 } from "react-icons/fa";
-import { MdEvent } from 'react-icons/md';
-import { TiDocumentText } from 'react-icons/ti';
+import { AiOutlineEdit } from "react-icons/ai";
+import { MdEvent } from "react-icons/md";
+import { TiDocumentText } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
-import { AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import logo from "../assets/images/login-logo.png";
 import { Divider } from "primereact/divider";
 
@@ -75,7 +77,7 @@ const BotonMenu = styled.button`
 `;
 
 const Enlace = styled(NavLink)`
-  height: 3.6rem;
+  height: 3.2rem;
   display: flex;
   color: #61282d;
   gap: 1rem;
@@ -95,7 +97,7 @@ const Enlace = styled(NavLink)`
     white-space: nowrap;
     text-overflow: ellipsis;
     font-family: "Roboto", "Arial", sans-serif;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.5rem;
     flex: 1;
     flex-basis: 0;
@@ -136,11 +138,12 @@ const Enlace = styled(NavLink)`
   }
 `;
 
-const Menu = (
-  { menuAbierto, setMenuAbierto }
-) => {
+const ScrollableContainer = styled.div`
+  overflow-y: auto;
   
+`;
 
+const Menu = ({ menuAbierto, setMenuAbierto }) => {
   const ModMenuAbierto = () => {
     setMenuAbierto(!menuAbierto);
   };
@@ -151,10 +154,13 @@ const Menu = (
     { label: "Citas", icon: FaCalendarAlt, to: "/admin/citas" },
     { label: "Calendario de citas", icon: MdEvent , to: "/admin/citas_pendientes" },
     { label: "Reportes", icon: TiDocumentText , to: "/admin/reportes" },
-    { label: "Mensajes", icon: FaCalendarAlt, to: "/admin/mensajes" },
     { label: "Lista de doctores", icon: FaUserMd, to: "/admin/doctor" },
     { label: "Asignaciones", icon: AiOutlineUsergroupAdd, to: "/admin/asignaciones" },
+    { label: "Noticias", icon: FaNewspaper, to: "/admin/noticias" },
+    { label: "Editar Perfil", icon: AiOutlineEdit, to: "/admin/editar_perfil" },
     { label: "Configuraciones", icon: FiSettings, to: "/admin/configuraciones" },
+    
+    
     
   ];
 
@@ -172,7 +178,8 @@ const Menu = (
           <LogoDivider />
         </ImgContenedor>
       </Logo>
-      <Divider/>
+      <Divider />
+      <ScrollableContainer>
       {paginas.map(({ label, icon: Icono, to }) => (
         <Enlace
           key={label}
@@ -191,9 +198,10 @@ const Menu = (
           {menuAbierto && <span>{label}</span>}
         </Enlace>
       ))}
+      </ScrollableContainer>
+      
     </ContenedorMenu>
   );
 };
 
 export default Menu;
-
